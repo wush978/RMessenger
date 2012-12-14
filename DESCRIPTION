@@ -1,0 +1,22 @@
+Package: XMPPNotifier
+Type: Package
+Title: Send message via XMPP protocol
+Version: 0.1
+Date: 2012-11-27
+Author: Wush Wu
+Maintainer: Wush Wu <wush.978@gmail.com>
+Description: Send notification via XMPP protocol
+License: GPL
+Depends:
+    RCurl (>= 1.95-3),
+    XML,
+    digest
+Collate:
+    'check_retval.fun.R'
+    'digest_md5.fun.R'
+    'facebook_message.fun.R'
+    'gen_string.fun.R'
+    'parse_challenge.fun.R'
+    'parse_str.fun.R'
+    'xmpp_auth_sasl_digest_md5.fun.R'
+    'xmpp_message_generator.fun.R'
