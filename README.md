@@ -1,6 +1,15 @@
 # XMPPNotifier
 
-## facebook
+## Install
+
+```r
+library(devtools)
+install_github("XMPPNotifier", username="wush978")
+```
+
+or you can download the source and build with `R CMD INSTALL`
+
+## Facebook
 
 Send a message to a specific fbid:
 
