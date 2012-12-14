@@ -9,11 +9,14 @@ install_github("XMPPNotifier", username="wush978")
 
 or you can download the source and build with `R CMD INSTALL`
 
+Windows User please install `Rtools` first.
+
 ## Facebook
 
 Send a message to a specific fbid:
 
 ```r
+library(XMPPNotifier)
 facebook_message("username", "password", "fbid", "R XMPPNotifier testing message")
 ```
 
