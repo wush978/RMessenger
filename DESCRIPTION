@@ -1,0 +1,10 @@
+Package: XMPPNotifier
+Type: Package
+Title: Send message via XMPP protocol
+Version: 0.1
+Date: 2012-11-27
+Author: Wush Wu
+Maintainer: Wush Wu <wush.978@gmail.com>
+Description: Send notification via XMPP protocol
+License: GPL
+Depends:
