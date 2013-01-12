@@ -1,0 +1,9 @@
+Makefile
+config.h.unix
+config.log
+config.status
+gloox-config
+gloox.pc
+libtool
+stamp-h1
+

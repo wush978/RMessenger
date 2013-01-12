@@ -1,0 +1,8 @@
+Makefile
+*.o
+*.lo
+*.la
+tests
+examples
+.libs
+.deps
