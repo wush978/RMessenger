@@ -1,1 +1,7 @@
 PKG_LIBS = @LIBS@
+
+$(SHLIB) : gloox-1.0/src/.libs/libgloox.so
+
+gloox-1.0/src/.libs/libgloox.so :
+	@(cd gloox-1.0 && $(MAKE) \
+	CC="$(CC)" CPP="$(CPP)" CFLAGS="$(CFLAGS) $(CPICFLAGS)" CPPFLAGS="$(CPPFLAGS)")
