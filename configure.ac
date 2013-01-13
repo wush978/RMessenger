@@ -10,6 +10,7 @@
      CPP=`"${R_HOME}/bin/R" CMD config CPP`
      CFLAGS=`"${R_HOME}/bin/R" CMD config CFLAGS`
      CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
+
      AC_PROG_CC
      AC_PROG_CPP
           
