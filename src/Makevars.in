@@ -1,4 +1,4 @@
-PKG_LIBS = @LIBS@ `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"`
+PKG_LIBS = @LIBS@ `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` libgloox.so
 PKG_CPPFLAGS = $(CPPFLAGS) -Iinclude
 
 $(SHLIB) : libgloox.so
