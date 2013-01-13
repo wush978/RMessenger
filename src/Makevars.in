@@ -1,6 +1,10 @@
 PKG_LIBS = @LIBS@
+PKG_CPPFLAGS = $(CPPFLAGS) -Iinclude
 
-$(SHLIB) : gloox-1.0/src/.libs/libgloox.so
+$(SHLIB) : libgloox.so
+
+libgloox.so : gloox-1.0/src/.libs/libgloox.so
+	cp gloox-1.0/src/.libs/libgloox.so .
 
 gloox-1.0/src/.libs/libgloox.so :
 	@(cd gloox-1.0 && $(MAKE) \
