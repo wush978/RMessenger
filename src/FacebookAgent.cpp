@@ -7,63 +7,56 @@
 
 #include "FacebookAgent.h"
 
-using std::ostream;
-using gloox::Message;
-using gloox::Client;
-using gloox::JID;
-
-//ostream& operator<<(ostream& os, Message::MessageType type) {
-//    switch (type) {
-//        case Message::Chat:
-//            os << "Chat";
-//            break;
-//        case Message::Error:
-//            os << "Error";
-//            break;
-//        case Message::Groupchat:
-//            os << "Groupchat";
-//            break;
-//        case Message::Headline:
-//            os << "Headline";
-//            break;
-//        case Message::Normal:
-//            os << "Normal";
-//            break;
-//        case Message::Invalid:
-//            os << "Invalid";
-//            break;
-//        default:
-//            os << "unknown type";
-//            break;
-//    }
-//    return os;
-//}
-//
-//ostream& operator<<(ostream& os, const Message& stanza) {
-//    os << "type:'" << stanza.subtype() <<  "' from:'" << stanza.from().full() << "' body:'" << stanza.body() << "'";
-//    return os;
-//}
+using namespace gloox;
+using std::endl;
 
 namespace XMPPNotifier {
 
-FacebookAgent::FacebookAgent(const std::string& username, const std::string& password) {
-	std::string fbusername(username);
-	fbusername.append("@chat.facebook.com");
-	JID jid(fbusername);
-    client = new Client( jid, "botpwd" );
-    connListener = new ConnListener();
-    client->registerMessageHandler( this );
-    client->registerConnectionListener(connListener);
-    client->connect(true);
+const LogLevel FacebookAgent::log_level = LogLevelDebug;
+const int FacebookAgent::log_area = LogAreaAll;
 
+FacebookAgent::FacebookAgent(const std::string& username, const std::string& password, std::ostream& ostream)
+: client(0), os(ostream) {
+	gloox::JID jid(fb(username));
+	client = new Client(jid, password);
+	client->setCompression(false);
+	client->disableRoster();
+	client->registerConnectionListener(this);
+	client->registerMessageHandler(this);
+	client->logInstance().registerLogHandler(FacebookAgent::log_level, FacebookAgent::log_area, this);
+	if (client->compression())
+		os << "Compression is On" << endl;
+	else
+		os << "Compression is Off" << endl;
 }
 
 FacebookAgent::~FacebookAgent() {
-    delete client;
-    delete connListener;
+	if (client) {
+		delete client;
+	}
 }
 
-void FacebookAgent::handleMessage(const gloox::Message& stanza, gloox::MessageSession* session) {
+/* exposed R functions */
+
+void FacebookAgent::sendMsg(const std::string& username, const std::string& message) {
+	target_jid = JID(fb(username));
+	this->message.assign(message);
+	client->connect(true);
+}
+
+
+/* LogHandler */
+
+void FacebookAgent::handleLog( gloox::LogLevel level, gloox::LogArea area, const std::string& message ) {
+	os << "[log]" << message << endl;
+}
+
+/* private methods */
+
+const std::string FacebookAgent::fb(const std::string& src) {
+	std::string retval(src);
+	retval.append("@chat.facebook.com");
+	return retval;
 }
 
 } /* namespace XMPPNotifier */

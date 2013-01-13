@@ -14,4 +14,7 @@
 
 #include "XMPPNotifier.Rfunction.h"
 
+#include "XMPPNotifier.RcppModule.h"
+
+
 #endif /* XMPPNOTIFIER_H_ */

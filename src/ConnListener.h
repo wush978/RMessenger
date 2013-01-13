@@ -12,6 +12,7 @@
 
 #include <Rcpp.h>
 #include <gloox/connectionlistener.h>
+#include <gloox/clientbase.h>
 
 namespace XMPPNotifier {
 

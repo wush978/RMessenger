@@ -15,6 +15,7 @@ void ConnListener::onConnect() {
 
 void ConnListener::onDisconnect(gloox::ConnectionError e) {
 	Rcpp::Rcout << "ConnListener::onDisconnect() " << e << std::endl;
+	throw e;
 }
 
 bool ConnListener::onTLSConnect(const gloox::CertInfo& info) {
