@@ -8,14 +8,24 @@
 #ifndef XMPPNOTIFIER_RCPPMODULE_H_
 #define XMPPNOTIFIER_RCPPMODULE_H_
 
+class RFacebookAgent : public XMPPNotifier::FacebookAgent {
+public:
+	RFacebookAgent(const std::string& username, const std::string& password) :
+	XMPPNotifier::FacebookAgent(username, password, Rcpp::Rcout) { }
+	virtual ~RFacebookAgent() { }
+	void sendMsg(const std::string& username, const std::string& message) {
+		XMPPNotifier::FacebookAgent::sendMsg(username, message);
+	}
+};
+
 RCPP_MODULE(FacebookAgent) {
 	using namespace Rcpp;
 
-	class_<XMPPNotifier::FacebookAgent>("FacebookAgent")
+	class_<RFacebookAgent>("FacebookAgent")
 
-	.constructor<std::string, std::string, std::string>()
+	.constructor<std::string, std::string>()
 
-	.method( "sendMsg", &XMPPNotifier::FacebookAgent::sendMsg )
+	.method( "sendMsg", &RFacebookAgent::sendMsg )
 	;
 }
 
