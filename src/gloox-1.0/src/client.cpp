@@ -147,9 +147,13 @@ namespace gloox
 
   bool Client::handleNormalNode( Tag* tag )
   {
+    this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode");
+
     if( tag->name() == "features" && tag->xmlns() == XMLNS_STREAM )
     {
+        this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode1");
       m_streamFeatures = getStreamFeatures( tag );
+      this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode2");
 
       if( m_tls == TLSRequired && !m_encryptionActive
           && ( !m_encryption || !( m_streamFeatures & StreamFeatureStartTls ) ) )
@@ -162,8 +166,13 @@ namespace gloox
       else if( m_tls > TLSDisabled && m_encryption && !m_encryptionActive
           && ( m_streamFeatures & StreamFeatureStartTls ) )
       {
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode3");
         notifyStreamEvent( StreamEventEncryption );
+        this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode4");
+
         startTls();
+        this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode5");
+
       }
       else if( m_compress && m_compression && !m_compressionActive
           && ( m_streamFeatures & StreamFeatureCompressZlib ) )
@@ -174,16 +183,22 @@ namespace gloox
       }
       else if( m_sasl )
       {
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode6");
         if( m_authed )
         {
+            this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode7");
+
           if( m_streamFeatures & StreamFeatureBind )
           {
+              this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode8");
+
             notifyStreamEvent( StreamEventResourceBinding );
             bindResource( resource() );
           }
         }
         else if( !username().empty() && !password().empty() )
         {
+            this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode9");
           if( !login() )
           {
             logInstance().err( LogAreaClassClient, "The server doesn't support"
@@ -194,8 +209,10 @@ namespace gloox
         else if( !m_clientCerts.empty() && !m_clientKey.empty()
                  && m_streamFeatures & SaslMechExternal && m_availableSaslMechs & SaslMechExternal )
         {
+            this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode10");
           notifyStreamEvent( StreamEventAuthentication );
           startSASL( SaslMechExternal );
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode11");
         }
 #if defined( _WIN32 ) && !defined( __SYMBIAN32__ )
         else if( m_streamFeatures & SaslMechGssapi && m_availableSaslMechs & SaslMechGssapi )
@@ -212,18 +229,30 @@ namespace gloox
         else if( m_streamFeatures & SaslMechAnonymous
                  && m_availableSaslMechs & SaslMechAnonymous )
         {
+            this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode12");
           notifyStreamEvent( StreamEventAuthentication );
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode13");
+
           startSASL( SaslMechAnonymous );
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode14");
+
         }
         else
         {
+            this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode15");
           notifyStreamEvent( StreamEventFinished );
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode16");
+
           connected();
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode17");
+
         }
       }
       else if( m_compress && m_compression && !m_compressionActive
           && ( m_streamFeatures & StreamFeatureCompressZlib ) )
       {
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode18");
+
         notifyStreamEvent( StreamEventCompression );
         negotiateCompression( StreamFeatureCompressZlib );
       }
@@ -234,6 +263,7 @@ namespace gloox
 //       }
       else if( m_streamFeatures & StreamFeatureIqAuth )
       {
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode19");
         notifyStreamEvent( StreamEventAuthentication );
         nonSaslLogin();
       }
@@ -246,20 +276,27 @@ namespace gloox
     }
     else
     {
+        this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode20");
+
       const std::string& name  = tag->name(),
                          xmlns = tag->findAttribute( XMLNS );
+      this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode21");
       if( name == "proceed" && xmlns == XMLNS_STREAM_TLS )
       {
         logInstance().dbg( LogAreaClassClient, "starting TLS handshake..." );
 
         if( m_encryption )
         {
+            this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode21");
           m_encryptionActive = true;
           m_encryption->handshake();
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode22");
+
         }
       }
       else if( name == "failure" )
       {
+          this->logInstance().dbg(gloox::LogAreaClassClient, "[test] handleNormalNode23");
         if( xmlns == XMLNS_STREAM_TLS )
         {
           logInstance().err( LogAreaClassClient, "TLS handshake failed (server-side)!" );
@@ -295,10 +332,12 @@ namespace gloox
         setAuthed( true );
         header();
       }
-      else
+      else {
+	    this->logInstance().dbg(gloox::LogAreaClassClient, "[test] leaving handleNormalNode(false)");
         return false;
+      }
     }
-
+    this->logInstance().dbg(gloox::LogAreaClassClient, "[test] leaving handleNormalNode(true)");
     return true;
   }
 

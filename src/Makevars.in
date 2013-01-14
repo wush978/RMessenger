@@ -1,11 +1,11 @@
 PKG_LIBS = @LIBS@ `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` libgloox.so
 PKG_CPPFLAGS = $(CPPFLAGS) -Iinclude
 
+all : $(SHLIB)
+
 $(SHLIB) : libgloox.so
 
-libgloox.so : gloox-1.0/src/.libs/libgloox.so
-	cp gloox-1.0/src/.libs/libgloox.so .
-
-gloox-1.0/src/.libs/libgloox.so :
+libgloox.so : 
 	@(cd gloox-1.0 && $(MAKE) \
 	CC="$(CC)" CPP="$(CPP)" CFLAGS="$(CFLAGS) $(CPICFLAGS)" CPPFLAGS="$(CPPFLAGS)")
+	cp gloox-1.0/src/.libs/libgloox.so .
