@@ -1,9 +1,9 @@
 library(XMPPNotifier)
 
-file.remove("test.log")
+args <- commandArgs(TRUE)
+stopifnot(length(args) == 4)
 
-fb_agent <- new("Rcpp_FacebookAgent", readline("facebook account:"), readline("password:"), "test.log")
 
-fb_agent$sendMsg(readline("target fbid:"), readline("content:"))
+fb_agent <- new("Rcpp_FacebookAgent", args[1], args[2])
 
-readLines("test.log")
+fb_agent$sendMsg(args[4], args[3])
