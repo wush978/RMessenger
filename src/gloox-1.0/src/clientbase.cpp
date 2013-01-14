@@ -224,17 +224,25 @@ namespace gloox
     {
       if( !handleNormalNode( tag ) )
       {
+    	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 0");
         if( tag->xmlns().empty() || tag->xmlns() == XMLNS_CLIENT )
         {
+      	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 1");
           if( tag->name() == "iq"  )
           {
+        	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 2");
             IQ iq( tag );
+      	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 3");
             m_seFactory->addExtensions( iq, tag );
+      	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 4");
             notifyIqHandlers( iq );
+      	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 5");
             ++m_stats.iqStanzasReceived;
+      	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 6");
           }
           else if( tag->name() == "message" )
           {
+        	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 7");
             Message msg( tag );
             m_seFactory->addExtensions( msg, tag );
             notifyMessageHandlers( msg );
@@ -242,6 +250,7 @@ namespace gloox
           }
           else if( tag->name() == "presence" )
           {
+        	  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 8");
             const std::string& type = tag->findAttribute( TYPE );
             if( type == "subscribe"  || type == "unsubscribe"
                 || type == "subscribed" || type == "unsubscribed" )
@@ -261,16 +270,23 @@ namespace gloox
           }
           else
             m_logInstance.err( LogAreaClassClientbase, "Received invalid stanza." );
+          logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 9");
         }
         else
         {
           notifyTagHandlers( tag );
         }
+      logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 10");
+
       }
+    logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 11");
     }
 
-    if( m_statisticsHandler )
+    if( m_statisticsHandler ) {
+        logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 12");
       m_statisticsHandler->handleStatistics( getStatistics() );
+    }
+  logInstance().dbg(LogAreaClassClientbase, "[test] handleTag 13");
   }
 
   void ClientBase::handleCompressedData( const std::string& data )
@@ -1461,6 +1477,7 @@ namespace gloox
     {
       if( (*it).tag == tag->name() && tag->hasAttribute( XMLNS, (*it).xmlns ) )
         (*it).th->handleTag( tag );
+      logInstance().dbg(LogAreaClassClientbase, "[test] notifyTagHandlers");
     }
   }
 
