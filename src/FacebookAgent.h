@@ -10,21 +10,62 @@
 
 #include <map>
 #include <iostream>
+#include <typeinfo>
+#include <gloox/dns.h>
 #include <gloox/client.h>
 #include <gloox/message.h>
 #include <gloox/messagehandler.h>
 #include <gloox/messagesessionhandler.h>
 #include <gloox/loghandler.h>
 #include <gloox/connectionlistener.h>
+#include <gloox/connectionbase.h>
+#include <gloox/connectiontcpclient.h>
 #include <gloox/rostermanager.h>
+#include <gloox/tlsbase.h>
 #include <gloox/iqhandler.h>
 
 namespace XMPPNotifier {
 
+class TestConnectionTCPClient : public gloox::ConnectionTCPClient {
+
+public:
+	TestConnectionTCPClient(gloox::ConnectionDataHandler* cdh, const gloox::LogSink& logInstance,
+                           const std::string& server, int port = -1 ) :
+    gloox::ConnectionTCPClient(cdh, logInstance, server, port) { }
+
+	virtual ~TestConnectionTCPClient() { }
+
+	virtual gloox::ConnectionError connect();
+
+	virtual gloox::ConnectionError receive() {
+		m_logInstance.dbg(gloox::LogAreaClassConnectionTCPClient, "TestConnectionTCPClient::receive");
+		return ConnectionTCPClient::receive();
+	}
+};
+
+class TestClient : public gloox::Client {
+
+public:
+	TestClient(gloox::JID& jid, const std::string& password) : Client(jid, password) { }
+	virtual ~TestClient() { }
+
+	bool connect(bool block) {
+		this->logInstance().dbg(gloox::LogAreaClassClient, "TestClient::connect");
+		bool retval = false;
+		retval = Client::connect(block);
+		return retval;
+	}
+
+	virtual void handleConnect( const gloox::ConnectionBase* connection ) {
+		this->logInstance().dbg(gloox::LogAreaClassClient, "TestClient::handleConnect");
+		gloox::ClientBase::handleConnect(connection);
+	}
+};
+
 class FacebookAgent :
 public gloox::LogHandler, gloox::ConnectionListener, gloox::MessageHandler {
 
-	gloox::Client* client;
+	TestClient* client;
 	gloox::JID target_jid;
 	std::string message;
 
@@ -51,6 +92,7 @@ public:
 
 	virtual void onConnect() {
 		os << "onConnect" << std::endl;
+		client->disconnect();
 	}
 
 	virtual void onDisconnect(gloox::ConnectionError e) {
@@ -68,6 +110,7 @@ public:
 	virtual void onResourceBind( const std::string& resource ) {
 		os << resource << std::endl;
 	}
+
 	/* MessageHandler */
 
 	virtual void handleMessage( const gloox::Message& stanza, gloox::MessageSession* session = 0 ) {

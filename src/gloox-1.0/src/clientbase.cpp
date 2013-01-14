@@ -787,13 +787,19 @@ namespace gloox
   {
     if( m_connection && m_connection->state() == StateConnected )
     {
-      if( m_compression && m_compressionActive )
+      if( m_compression && m_compressionActive ) {
+        logInstance().dbg( LogAreaXmlOutgoing, "compress" );
         m_compression->compress( xml );
-      else if( m_encryption && m_encryptionActive )
+      }
+      else if( m_encryption && m_encryptionActive ) {
+        logInstance().dbg( LogAreaXmlOutgoing, "encrypt" );
         m_encryption->encrypt( xml );
-      else
-        m_connection->send( xml );
-
+        logInstance().dbg( LogAreaXmlOutgoing, "leave encrypt" );
+      }
+      else {
+    	logInstance().dbg( LogAreaXmlOutgoing, "send" );
+    	m_connection->send( xml );
+      }
       logInstance().dbg( LogAreaXmlOutgoing, xml );
     }
   }
