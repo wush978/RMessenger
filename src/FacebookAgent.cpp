@@ -24,10 +24,6 @@ FacebookAgent::FacebookAgent(const std::string& username, const std::string& pas
 	client->registerConnectionListener(this);
 	client->registerMessageHandler(this);
 	client->logInstance().registerLogHandler(FacebookAgent::log_level, FacebookAgent::log_area, this);
-	if (client->compression())
-		os << "Compression is On" << endl;
-	else
-		os << "Compression is Off" << endl;
 }
 
 FacebookAgent::~FacebookAgent() {

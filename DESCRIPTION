@@ -7,5 +7,9 @@ Author: Wush Wu
 Maintainer: Wush Wu <wush.978@gmail.com>
 Description: Send notification via XMPP protocol
 License: GPL
-Depends: Rcpp (>= 0.10)
+Depends:
+    Rcpp (>= 0.10)
 LinkingTo: Rcpp
+RcppModules: FacebookAgent
+Collate:
+    'zzz.R'

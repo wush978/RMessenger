@@ -1,0 +1,2 @@
+useDynLib(libgloox)
+useDynLib(XMPPNotifier)
