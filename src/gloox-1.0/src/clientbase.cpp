@@ -1329,23 +1329,35 @@ namespace gloox
 
   void ClientBase::notifyIqHandlers( IQ& iq )
   {
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 0");
     m_iqHandlerMapMutex.lock();
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 1");
     IqTrackMap::iterator it_id = m_iqIDHandlers.find( iq.id() );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 2");
     m_iqHandlerMapMutex.unlock();
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 3");
     if( it_id != m_iqIDHandlers.end() && iq.subtype() & ( IQ::Result | IQ::Error ) )
     {
+  	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 4");
       (*it_id).second.ih->handleIqID( iq, (*it_id).second.context );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 5");
       if( (*it_id).second.del )
         delete (*it_id).second.ih;
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 6");
       m_iqHandlerMapMutex.lock();
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 7");
       m_iqIDHandlers.erase( it_id );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 8");
       m_iqHandlerMapMutex.unlock();
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 9");
       return;
     }
 
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 10");
     if( iq.extensions().empty() )
       return;
 
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 11");
     bool res = false;
 
     // FIXME remove for 1.1
@@ -1359,24 +1371,36 @@ namespace gloox
 //     }
 //     delete tag;
 
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 12");
     typedef IqHandlerMap::const_iterator IQci;
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 13");
     const StanzaExtensionList& sel = iq.extensions();
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 14");
     StanzaExtensionList::const_iterator itse = sel.begin();
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 15");
     for( ; itse != sel.end(); ++itse )
     {
+  	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 16");
       std::pair<IQci, IQci> g = m_iqExtHandlers.equal_range( (*itse)->extensionType() );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 17");
       for( IQci it = g.first; it != g.second; ++it )
       {
+    	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 18");
         if( (*it).second->handleIq( iq ) )
           res = true;
+  	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 19");
       }
     }
 
     if( !res && iq.subtype() & ( IQ::Get | IQ::Set ) )
     {
+  	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 20");
       IQ re( IQ::Error, iq.from(), iq.id() );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 21");
       re.addExtension( new Error( StanzaErrorTypeCancel, StanzaErrorServiceUnavailable ) );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 22");
       send( re );
+	  logInstance().dbg(LogAreaClassClientbase, "[test] notifyIqHandlers 23");
     }
   }
 
