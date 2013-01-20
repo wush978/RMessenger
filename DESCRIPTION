@@ -7,5 +7,8 @@ Author: Wush Wu
 Maintainer: Wush Wu <wush978@gmail.com>
 Description: XMPP Client for R
 License: GPL
-Depends: Rcpp (>= 0.10.2)
+Depends:
+    Rcpp (>= 0.10.2)
 LinkingTo: Rcpp
+Collate:
+    'zzz.R'
