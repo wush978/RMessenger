@@ -1,2 +1,7 @@
-PKG_LIBS = @LIBS@ `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"`
-PKG_CPPFLAGS = $(CPPFLAGS)
+PKG_LIBS = @LIBS@ `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` -Llibstrophe -lstrophe -lresolv  -lxml2 -lssl
+PKG_CPPFLAGS = $(CPPFLAGS) -I./libstrophe
+
+$(SHLIB): libstrophe/libstrophe.a
+
+libstrophe/libstrophe.a:
+	cd libstrophe && $(MAKE)
