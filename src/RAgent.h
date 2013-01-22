@@ -35,7 +35,7 @@ public:
 	virtual void addHandler(Rcpp::Function handler, const std::string& ns, const std::string& name, const std::string& type);
 	//virtual void removeHandler(const std::string& ns, const std::string& name, const std::string& type);
 
-	virtual void run();
+	virtual void run(const int timeout);
 	virtual void runOnce(const unsigned long timeout = 30);
 	virtual void stop();
 	virtual void Disconnect();

@@ -37,15 +37,12 @@ RAgent::~RAgent() {
 void RAgent::connectHandler(const xmpp_conn_event_t status, const int error, xmpp_stream_error_t * const stream_error, void * const userdata) {
 	switch (status) {
 	case XMPP_CONN_CONNECT:
-		Rcout << "CONN_CONNECT" << endl;
 		this->onConnect();
 		break;
 	case XMPP_CONN_DISCONNECT:
-		Rcout << "CONN_DISCONNECT" << endl;
 		this->onDisconnect();
 		break;
 	case XMPP_CONN_FAIL:
-		Rcout << "CONN_FAIL" << endl;
 		this->onConnFail();
 		break;
 	}
@@ -71,8 +68,8 @@ void RAgent::addHandler(Rcpp::Function handler, const std::string& ns, const std
 			retval);
 }
 
-void RAgent::run() {
-	return Agent::run();
+void RAgent::run(const int timeout) {
+	return Agent::run(timeout);
 }
 
 void RAgent::runOnce(const unsigned long timeout) {

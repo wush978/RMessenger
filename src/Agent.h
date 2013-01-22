@@ -18,6 +18,7 @@ protected:
 	Log* log;
 	Ctx* ctx;
 	Connection* conn;
+	bool is_continue;
 	static Agent* current_agent;
 
 public:
@@ -26,7 +27,7 @@ public:
 	virtual void connectHandler(const xmpp_conn_event_t status,
 		const int error, xmpp_stream_error_t * const stream_error,
 		void * const userdata) = 0;
-	virtual void run();
+	virtual void run(const int timeout);
 	virtual void runOnce(const unsigned long timeout = 30);
 	virtual void stop();
 	virtual void Disconnect();
