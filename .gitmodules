@@ -1,3 +1,0 @@
-[submodule "src/libstrophe"]
-	path = src/libstrophe
-	url = https://github.com/metajack/libstrophe.git
