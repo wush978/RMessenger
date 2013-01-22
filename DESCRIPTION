@@ -10,5 +10,6 @@ License: GPL
 Depends:
     Rcpp (>= 0.10.2)
 LinkingTo: Rcpp
+RcppModules: agent_module
 Collate:
     'zzz.R'
