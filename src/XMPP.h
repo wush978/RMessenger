@@ -15,7 +15,9 @@ namespace RXMPP {
 
 	class Log;
 	class Ctx;
+	class Stz;
 	class Connection;
+	class Handler;
 }
 
 

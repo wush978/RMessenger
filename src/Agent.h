@@ -18,17 +18,25 @@ protected:
 	Log* log;
 	Ctx* ctx;
 	Connection* conn;
+	static Agent* current_agent;
+
 public:
 	Agent(const std::string& jid, const std::string& password, const xmpp_log_level_t level = XMPP_LEVEL_DEBUG);
 	virtual ~Agent();
-	virtual void connectHandler(const xmpp_conn_event_t status, const int error, xmpp_stream_error_t * const stream_error, void * const userdata) = 0;
+	virtual void connectHandler(const xmpp_conn_event_t status,
+		const int error, xmpp_stream_error_t * const stream_error,
+		void * const userdata) = 0;
+	virtual void run();
+	virtual void runOnce(const unsigned long timeout = 30);
+	virtual void stop();
+	virtual void Disconnect();
 
 private:
-	static Agent* current_agent;
 	static void priConnHandler(xmpp_conn_t * const conn, const xmpp_conn_event_t status,
 			  const int error, xmpp_stream_error_t * const stream_error,
 			  void * const userdata);
 
+	static void checkCurrentAgent();
 };
 
 } /* namespace RXMPP */

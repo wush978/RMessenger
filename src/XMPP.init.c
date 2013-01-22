@@ -10,11 +10,9 @@
 #include <strophe.h>
 
 SEXP RXMPP__initialize() {
-	xmpp_initialize();
 	return R_NilValue;
 }
 
 SEXP RXMPP__shutdown() {
-	xmpp_shutdown();
 	return R_NilValue;
 }
