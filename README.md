@@ -2,14 +2,21 @@
 
 ## 安裝
 
-```r
-library(devtools)
-install_github("XMPPNotifier", username="wush978")
+Ubuntu請先安裝：
+
+```sh
+sudo apt-get install libssl-dev libxml2-dev pkg-config
 ```
 
-也可以下載source後使用`R CMD INSTALL`來安裝
+R中請確認版本為2.15.2以上，Rcpp請確認為0.10.2以上。
 
-Windows使用者需要安裝Rtools
+``` r
+install.packages("Rcpp")
+```
+
+請下載 https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/XMPPNotifier_0.1.tar.gz 後使用`R CMD INSTALL`來安裝
+
+Windows目前無法使用
 
 ## Facebook
 
@@ -18,7 +25,7 @@ Windows使用者需要安裝Rtools
 ```r
 library(XMPPNotifier)
 # not run
-# facebookMessage("wush", "shouldnotbehere", "12345678", "R XMPPNotifier testing message")
+# facebookMessage("wush", "password_of_wush", "12345678", "R XMPPNotifier testing message")
 ```
 
 ## 如何查詢fbid
@@ -33,14 +40,21 @@ library(XMPPNotifier)
 
 ## Install
 
-```r
-library(devtools)
-install_github("XMPPNotifier", username="wush978")
+For Ubuntu:
+
+```sh
+sudo apt-get install libssl-dev libxml2-dev pkg-config
 ```
 
-or you can download the source and build with `R CMD INSTALL`
+Please confirm the version of R( >= 2.15.2 ) and Rcpp( >= 0.10.2 ).
 
-Windows User please install `Rtools` first.
+``` r
+install.packages("Rcpp")
+```
+
+Download the source package from https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/XMPPNotifier_0.1.tar.gz and call `R CMD INSTALL` to install
+
+This package is unavailable on Windows
 
 ## Facebook
 
@@ -65,3 +79,9 @@ library(XMPPNotifier)
 # Reference
 
 - [Getting Facebook User ID](http://dragonslayerclan.org/index.php/component/content/article?id=22)
+
+# Compiling on Windows
+
+- Install MinGW
+- Install openssl, libxml2
+- GOGOGO
