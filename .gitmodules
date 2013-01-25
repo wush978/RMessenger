@@ -1,3 +1,0 @@
-[submodule "src/libstrophe"]
-	path = src/libstrophe
-	url = git@github.com:wush978/libstrophe.git
