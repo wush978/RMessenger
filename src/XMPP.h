@@ -8,7 +8,7 @@
 #ifndef XMPP_H_
 #define XMPP_H_
 
-#include <strophe.h>
+#include "strophe.h"
 #include <string>
 
 namespace RXMPP {

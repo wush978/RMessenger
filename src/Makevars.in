@@ -1,7 +1,19 @@
-PKG_LIBS = @LIBS@ `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` -Llibstrophe -lstrophe -lresolv  -lxml2 -lssl
-PKG_CPPFLAGS = $(CPPFLAGS) -I./libstrophe
+libxml2_CFLAGS = -I/usr/include/libxml2
+libxml2_LIBS= -lxml2 -lz
 
-$(SHLIB): libstrophe/libstrophe.a
+SSL_LIBS = -lssl -lcrypto -lz
 
-libstrophe/libstrophe.a:
-	cd libstrophe && $(MAKE)
+SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
+	libstrophe/event.c libstrophe/handler.c libstrophe/hash.c \
+	libstrophe/jid.c libstrophe/md5.c libstrophe/sasl.c libstrophe/sha1.c \
+	libstrophe/snprintf.c libstrophe/sock.c libstrophe/stanza.c libstrophe/thread.c \
+	libstrophe/tls_openssl.c libstrophe/util.c libstrophe/parser_libxml2.c
+
+PKG_LIBS = `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(libxml2_LIBS) $(SSL_LIBS) @LIBS@
+PKG_CPPFLAGS = $(CPPFLAGS)
+PKG_CFLAGS = -I. $(libxml2_CFLAGS)
+
+
+SOURCES_CPP = $(wildcard *.cpp)
+SOURCES_C = $(wildcard *.c)
+OBJECTS = $(SOURCES_STROPHE:.c=.o) $(SOURCES_CPP:.cpp=.o) $(SOURCES_C:.c=.o)

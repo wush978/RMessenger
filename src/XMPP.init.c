@@ -7,7 +7,7 @@
 
 #include <R.h>
 #include <Rdefines.h>
-#include <strophe.h>
+#include "strophe.h"
 
 SEXP RXMPP__initialize() {
 	return R_NilValue;
