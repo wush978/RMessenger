@@ -1,8 +1,8 @@
 
 ## Use the R_HOME indirection to support installations of multiple R version
 
-libxml2_CFLAGS = -I($LIB_XML)/include
-libxml2_LIBS= -L($LIB_XML)/lib -lxml2 -lz
+libxml2_CFLAGS = -I"$(LIB_XML)/include"
+libxml2_LIBS= $(LIB_XML)/lib/libxml2.lib
 
 SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 	libstrophe/event.c libstrophe/handler.c libstrophe/hash.c \
@@ -12,7 +12,7 @@ SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 
 PKG_LIBS = $(shell "${R_HOME}/bin${R_ARCH_BIN}/Rscript.exe" -e "Rcpp:::LdFlags()") $(libxml2_LIBS) -lwinmm -lws2_32
 PKG_CPPFLAGS = $(CPPFLAGS)
-PKG_CFLAGS = -I. $(libxml2_CFLAGS)
+PKG_CFLAGS = $(CFLAGS) -I. $(libxml2_CFLAGS) -D_WIN32
 
 
 SOURCES_CPP = $(wildcard *.cpp)
