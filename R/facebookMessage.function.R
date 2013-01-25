@@ -2,7 +2,7 @@
 #'
 #'@param username facebook username
 #'@param password password for login
-#'@param to a string of number of fbid
+#'@param fbid to a string of number of fbid
 #'@param message message to send
 #'@param log_level level of displayed message. One of XMPP_LEVEL_DEBUG, XMPP_LEVEL_INFO, XMPP_LEVEL_WARN, and XMPP_LEVEL_ERROR
 #'@param timeout time to wait for sending message. The longest time for hanging is 2*timeout
