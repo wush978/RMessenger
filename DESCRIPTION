@@ -8,8 +8,11 @@ Maintainer: Wush Wu <wush978@gmail.com>
 Description: XMPP Client for R
 License: GPL
 Depends:
+    methods,
     Rcpp (>= 0.10.2)
 LinkingTo: Rcpp
 RcppModules: agent_module
 Collate:
     'zzz.R'
+    'facebookMessage.function.R'
+    'sendXMPPMessage.function.R'
