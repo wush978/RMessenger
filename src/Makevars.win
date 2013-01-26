@@ -1,8 +1,12 @@
 
 ## Use the R_HOME indirection to support installations of multiple R version
 
-libxml2_CFLAGS = -I"$(LIB_XML)/include"
-libxml2_LIBS= $(LIB_XML)/lib/libxml2.lib
+libxml2_CFLAGS = -I"$(LIB_XML)/include/libxml2"
+ifeq ($(WIN),64)
+libxml2_LIBS= -L"$(LIB_XML)/lib/x64" -lxml2 -liconv -lz
+else
+libxml2_LIBS= -L"$(LIB_XML)/lib/i386" -lxml2 -liconv -lz
+endif
 
 SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 	libstrophe/event.c libstrophe/handler.c libstrophe/hash.c \
@@ -18,3 +22,4 @@ PKG_CFLAGS = $(CFLAGS) -I. $(libxml2_CFLAGS) -D_WIN32
 SOURCES_CPP = $(wildcard *.cpp)
 SOURCES_C = $(wildcard *.c)
 OBJECTS = $(SOURCES_STROPHE:.c=.o) $(SOURCES_CPP:.cpp=.o) $(SOURCES_C:.c=.o)
+
