@@ -154,8 +154,8 @@ void xmpp_default_logger(void * const userdata,
 			 const char * const msg)
 {
     xmpp_log_level_t filter_level = * (xmpp_log_level_t*)userdata;
-    if (level >= filter_level)
-	fprintf(stderr, "%s %s %s\n", area, _xmpp_log_level_name[level], msg);
+//    if (level >= filter_level)
+//	fprintf(stderr, "%s %s %s\n", area, _xmpp_log_level_name[level], msg);
 }
 
 static const xmpp_log_t _xmpp_default_loggers[] = {
