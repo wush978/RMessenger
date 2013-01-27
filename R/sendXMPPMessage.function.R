@@ -11,5 +11,5 @@
 #'@export
 #'
 sendXMPPMessage <- function(jid, password, to, message, log_level = XMPP_LEVEL_ERROR, timeout = 15) {
-	.Call("RXMPP__sendMessage", jid, password, to, message, log_level, timeout);
+	.Call("RXMPP__sendMessage", jid, password, to, enc2utf8(message), log_level, timeout);
 }
