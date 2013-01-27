@@ -1,17 +1,16 @@
-Package: XMPPNotifier
+Package: RMessenger
 Type: Package
-Title: XMPP Client for R
+Title: IM Client for R
 Version: 0.1
 Date: 2013-01-20
 Author: Wush Wu
 Maintainer: Wush Wu <wush978@gmail.com>
-Description: XMPP Client for R
+Description: IM Client which implements XMPP protocols based on libstrophe(http://strophe.im/libstrophe/)
 License: GPL
 Depends:
     methods,
     Rcpp (>= 0.10.2)
 LinkingTo: Rcpp
-RcppModules: agent_module
 Collate:
     'zzz.R'
     'facebookMessage.function.R'

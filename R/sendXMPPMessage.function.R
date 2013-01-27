@@ -11,19 +11,5 @@
 #'@export
 #'
 sendXMPPMessage <- function(jid, password, to, message, log_level = XMPP_LEVEL_ERROR, timeout = 15) {
-	agent <- new("Rcpp_RAgent", jid, password, log_level, 
-							 function() { 
-							 		agent$send(to, message)
-							 }, function() {
-							 		agent$stop()
-							 		agent$Disconnect()
-							 }, function() {
-							 		agent$stop()
-							 		agent$Disconnect()
-							 })
-	agent$addHandler( function() {
-		agent$stop()
-	}, "", "iq", "set")
-	agent$run(as.integer(timeout))
-	agent$Disconnect()
+	.Call("RXMPP__sendMessage", jid, password, to, enc2utf8(message), log_level, timeout);
 }

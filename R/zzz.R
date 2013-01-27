@@ -1,10 +1,7 @@
-#'@useDynLib XMPPNotifier
-loadModule("agent_module", TRUE)
-
-
 #'Level for displaying message
 #'
 #'@export
+#'@useDynLib XMPPNotifier
 XMPP_LEVEL_DEBUG <- 0L
 
 #'Level for displaying message
