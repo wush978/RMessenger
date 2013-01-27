@@ -680,6 +680,7 @@ void xmpp_conn_disable_tls(xmpp_conn_t * const conn)
 
 static void _log_open_tag(xmpp_conn_t *conn, char **attrs)
 {
+	xmpp_debug(conn->ctx, "xmpp", "_log_open_tag\n");
     char buf[4096];
     size_t len, pos;
     int i;
@@ -725,7 +726,7 @@ static void _handle_stream_start(char *name, char **attrs,
     char *id;
 
     if (strcmp(name, "stream:stream") != 0) {
-        Rprintf("name = %s\n", name);
+    	xmpp_error(conn->ctx, "conn", "name = %s\n", name);
         xmpp_error(conn->ctx, "conn", "Server did not open valid stream.");
         conn_disconnect(conn);
     } else {
@@ -751,6 +752,7 @@ static void _handle_stream_end(char *name,
                                void * const userdata)
 {
     xmpp_conn_t *conn = (xmpp_conn_t *)userdata;
+	xmpp_debug(conn->ctx, "xmpp", "_handle_stream_end userdata: %p", userdata);
 
     /* stream is over */
     xmpp_debug(conn->ctx, "xmpp", "RECV: </stream:stream>");
@@ -761,12 +763,15 @@ static void _handle_stream_stanza(xmpp_stanza_t *stanza,
                                   void * const userdata)
 {
     xmpp_conn_t *conn = (xmpp_conn_t *)userdata;
+	xmpp_debug(conn->ctx, "xmpp", "_handle_stream_stanza userdata: %p", userdata);
     char *buf;
     size_t len;
 
     if (xmpp_stanza_to_text(stanza, &buf, &len) == 0) {
         xmpp_debug(conn->ctx, "xmpp", "RECV: %s", buf);
+        xmpp_debug(conn->ctx, "xmpp", "before xmpp_free");
         xmpp_free(conn->ctx, buf);
+        xmpp_debug(conn->ctx, "xmpp", "after xmpp_free");
     }
 
     handler_fire_stanza(conn, stanza);

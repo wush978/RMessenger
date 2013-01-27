@@ -42,10 +42,12 @@
 void handler_fire_stanza(xmpp_conn_t * const conn,
 			 xmpp_stanza_t * const stanza)
 {
+	xmpp_debug(conn->ctx, "xmpp", "handler_fire_stanza");
     xmpp_handlist_t *item, *prev;
     char *id, *ns, *name, *type;
     
     /* call id handlers */
+    xmpp_debug(conn->ctx, "xmpp", "call id handlers");
     id = xmpp_stanza_get_id(stanza);
     if (id) {
 	prev = NULL;
@@ -77,11 +79,13 @@ void handler_fire_stanza(xmpp_conn_t * const conn,
     }
     
     /* call handlers */
+    xmpp_debug(conn->ctx, "xmpp", "call handlers");
     ns = xmpp_stanza_get_ns(stanza);
     name = xmpp_stanza_get_name(stanza);
     type = xmpp_stanza_get_type(stanza);
     
     /* enable all added handlers */
+    xmpp_debug(conn->ctx, "xmpp", "enable all added handlers");
     for (item = conn->handlers; item; item = item->next)
 	item->enabled = 1;
 
@@ -89,6 +93,7 @@ void handler_fire_stanza(xmpp_conn_t * const conn,
     item = conn->handlers;
     while (item) {
 	/* skip newly added handlers */
+    xmpp_debug(conn->ctx, "xmpp", "skip newly added handlers");
 	if (!item->enabled) {
 	    prev = item;
 	    item = item->next;
@@ -96,6 +101,7 @@ void handler_fire_stanza(xmpp_conn_t * const conn,
 	}
 
 	/* don't call user handlers until authentication succeeds */
+	xmpp_debug(conn->ctx, "xmpp", "don't call user handlers until authentication succeeds");
 	if (item->user_handler && !conn->authenticated) {
 	    prev = item;
 	    item = item->next;
@@ -108,6 +114,7 @@ void handler_fire_stanza(xmpp_conn_t * const conn,
 	    (!item->type || (type && strcmp(type, item->type) == 0)))
 	    if (!((xmpp_handler)(item->handler))(conn, stanza, item->userdata)) {
 		/* handler is one-shot, so delete it */
+	    xmpp_debug(conn->ctx, "xmpp", "handler is one-shot, so delete it");
 		if (prev)
 		    prev->next = item->next;
 		else
