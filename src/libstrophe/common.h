@@ -118,30 +118,30 @@ typedef struct _xmpp_handlist_t xmpp_handlist_t;
 struct _xmpp_handlist_t {
     /* common members */
     int user_handler;
-    void *handler;
+    xmpp_handler handler;
     void *userdata;
     int enabled; /* handlers are added disabled and enabled after the
 		  * handler chain is processed to prevent stanzas from
 		  * getting processed by newly added handlers */
     xmpp_handlist_t *next;
 
-    union {
+    union handlers {
 	/* timed handlers */
-	struct {
+	struct timed_handler_t {
 	    unsigned long period;
 	    uint64_t last_stamp;
-	};
+	} timed_handler;
 	/* id handlers */
-	struct {
+	struct id_handler_t {
 	    char *id;
-	};
+	} id_handler;
 	/* normal handlers */
-	struct {
+	struct normal_handler_t {
 	    char *ns;
 	    char *name;
 	    char *type;
-	};
-    };
+	} normal_handler;
+    } handlist;
 };
 
 #define SASL_MASK_PLAIN 0x01
