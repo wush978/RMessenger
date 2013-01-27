@@ -110,7 +110,7 @@ xmpp_stanza_t *xmpp_stanza_copy(const xmpp_stanza_t * const stanza)
 	copy->attributes = hash_new(stanza->ctx, 8, xmpp_free);
 	if (!copy->attributes) goto copy_error;
 	iter = hash_iter_new(stanza->attributes);
-	if (!iter) { printf("DEBUG HERE\n"); goto copy_error; }
+	if (!iter) { Rprintf("DEBUG HERE\n"); goto copy_error; }
 	while ((key = hash_iter_next(iter))) {
 	    val = xmpp_strdup(stanza->ctx,
 			      (char *)hash_get(stanza->attributes, key));
