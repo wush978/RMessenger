@@ -1,4 +1,4 @@
-# XMPPNotifier
+# RMessenger
 
 ## 安裝
 
@@ -14,18 +14,25 @@ R中請確認版本為2.15.2以上，Rcpp請確認為0.10.2以上。
 install.packages("Rcpp")
 ```
 
-請下載 https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/XMPPNotifier_0.1.tar.gz 後使用`R CMD INSTALL`來安裝
+請下載 https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/RMessenger_0.1.tar.gz 後使用`R CMD INSTALL`來安裝
 
 Windows目前無法使用
+
+## Google Talk
+
+```r
+# not run
+# sendXMPPMessage("sender@gmail.com", "sender_passwd", "receiver@gmail.com", "message_content")
+```
 
 ## Facebook
 
 發送訊息給特定的fbid
 
 ```r
-library(XMPPNotifier)
+library(RMessenger)
 # not run
-# facebookMessage("wush", "password_of_wush", "12345678", "R XMPPNotifier testing message")
+# facebookMessage("wush", "password_of_wush", "12345678", "RMessenger testing message 中文測試")
 ```
 
 ## 如何查詢fbid
@@ -52,18 +59,25 @@ Please confirm the version of R( >= 2.15.2 ) and Rcpp( >= 0.10.2 ).
 install.packages("Rcpp")
 ```
 
-Download the source package from https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/XMPPNotifier_0.1.tar.gz and call `R CMD INSTALL` to install
+Download the source package from https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/RMessenger_0.1.tar.gz and call `R CMD INSTALL` to install
 
 This package is unavailable on Windows
+
+## Google Talk
+
+```r
+# not run
+# sendXMPPMessage("sender@gmail.com", "sender_passwd", "receiver@gmail.com", "message_content")
+```
 
 ## Facebook
 
 Send a message to a specific fbid:
 
 ```r
-library(XMPPNotifier)
+library(RMessenger)
 # not run
-# facebookMessage("wush", "shouldnotbehere", "12345678", "R XMPPNotifier testing message")
+# facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message test chinese 測試中文")
 ```
 
 ## How to query fbid
@@ -79,9 +93,3 @@ library(XMPPNotifier)
 # Reference
 
 - [Getting Facebook User ID](http://dragonslayerclan.org/index.php/component/content/article?id=22)
-
-# Compiling on Windows
-
-- Install MinGW
-- Install openssl, libxml2
-- GOGOGO
