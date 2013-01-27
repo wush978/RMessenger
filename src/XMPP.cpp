@@ -47,8 +47,6 @@ namespace RXMPP {
 			  void * const userdata)
 	{
 	    UserData* data = reinterpret_cast<UserData *>(userdata);
-	    xmpp_ctx_t* ctx = data->ctx;
-	    const StrVec& message_vec(*(data->message_vec));
 		if (status == XMPP_CONN_CONNECT) {
 			Rprintf("DEBUG: connected\n");
 			data->is_connect = true;

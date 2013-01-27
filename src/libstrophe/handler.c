@@ -193,7 +193,7 @@ uint64_t handler_fire_timed(xmpp_ctx_t * const ctx)
 
 	    /* delete handler if it returned false */
 	    if (fired && !ret)
-		xmpp_timed_handler_delete(connitem->conn, temp->handler);
+		xmpp_timed_handler_delete(connitem->conn, (xmpp_timed_handler) temp->handler);
 	}
 
 	connitem = connitem->next;
@@ -231,7 +231,7 @@ static void _timed_handler_add(xmpp_conn_t * const conn,
 
     /* check if handler is already in the list */
     for (item = conn->timed_handlers; item; item = item->next) {
-	if (item->handler == (void *)handler)
+	if (item->handler == handler)
 	    break;
     }
     if (item) return;
@@ -241,7 +241,7 @@ static void _timed_handler_add(xmpp_conn_t * const conn,
     if (!item) return;
 
     item->user_handler = user_handler;
-    item->handler = (void *)handler;
+    item->handler = handler;
     item->userdata = userdata;
     item->enabled = 0;
     item->next = NULL;
@@ -277,7 +277,7 @@ void xmpp_timed_handler_delete(xmpp_conn_t * const conn,
     prev = NULL;
     item = conn->timed_handlers;
     while (item) {
-	if (item->handler == (void *)handler)
+	if (item->handler == handler)
 	    break;
 	prev = item;
 	item = item->next;
@@ -303,7 +303,7 @@ static void _id_handler_add(xmpp_conn_t * const conn,
     /* check if handler is already in the list */
     item = (xmpp_handlist_t *)hash_get(conn->id_handlers, id);
     while (item) {
-	if (item->handler == (void *)handler)
+	if (item->handler == handler)
 	    break;
 	item = item->next;
     }
@@ -314,7 +314,7 @@ static void _id_handler_add(xmpp_conn_t * const conn,
     if (!item) return;
 
     item->user_handler = user_handler;
-    item->handler = (void *)handler;
+    item->handler = handler;
     item->userdata = userdata;
     item->enabled = 0;
     item->next = NULL;
@@ -355,7 +355,7 @@ void xmpp_id_handler_delete(xmpp_conn_t * const conn,
     if (!item) return;
 
     while (item) {
-	if (item->handler == (void *)handler)
+	if (item->handler == handler)
 	    break;
 
 	prev = item;
@@ -386,7 +386,7 @@ static void _handler_add(xmpp_conn_t * const conn,
 
     /* check if handler already in list */
     for (item = conn->handlers; item; item = item->next) {
-	if (item->handler == (void *)handler)
+	if (item->handler == handler)
 	    break;
     }
     if (item) return;
@@ -396,7 +396,7 @@ static void _handler_add(xmpp_conn_t * const conn,
     if (!item) return;
 
     item->user_handler = user_handler;
-    item->handler = (void *)handler;
+    item->handler = handler;
     item->userdata = userdata;
     item->enabled = 0;
     item->next = NULL;
@@ -456,7 +456,7 @@ void xmpp_handler_delete(xmpp_conn_t * const conn,
     prev = NULL;
     item = conn->handlers;
     while (item) {
-	if (item->handler == (void *)handler)
+	if (item->handler == handler)
 	    break;
 	
 	prev = item;
