@@ -10,8 +10,8 @@ SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 	libstrophe/tls_openssl.c libstrophe/util.c libstrophe/parser_libxml2.c
 
 PKG_LIBS = `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(libxml2_LIBS) $(SSL_LIBS) @LIBS@
-PKG_CPPFLAGS = $(CPPFLAGS)
-PKG_CFLAGS = -I. $(libxml2_CFLAGS)
+PKG_CPPFLAGS = $(CPPFLAGS) -Wall -pedantic
+PKG_CFLAGS = -I. $(libxml2_CFLAGS) -Wall -pedantic
 
 
 SOURCES_CPP = $(wildcard *.cpp)
