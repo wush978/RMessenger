@@ -25,6 +25,7 @@
   Send Facebook Message
 }
 \examples{
-facebookMessage("wush", "shouldnotbehere", "12345678", "R XMPPNotifier testing message")
+# not run
+# facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
 }
 
