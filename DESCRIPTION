@@ -5,7 +5,7 @@ Version: 0.1
 Date: 2013-01-20
 Author: Wush Wu
 Maintainer: Wush Wu <wush978@gmail.com>
-Description: IM Client which implements XMPP protocols
+Description: IM Client which implements XMPP protocols based on libstrophe(http://strophe.im/libstrophe/)
 License: GPL
 Depends:
     methods,
