@@ -1,7 +1,7 @@
 #'Level for displaying message
 #'
 #'@export
-#'@useDynLib XMPPNotifier
+#'@useDynLib RMessenger
 XMPP_LEVEL_DEBUG <- 0L
 
 #'Level for displaying message

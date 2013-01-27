@@ -7,7 +7,8 @@
 #'@param log_level level of displayed message. One of XMPP_LEVEL_DEBUG, XMPP_LEVEL_INFO, XMPP_LEVEL_WARN, and XMPP_LEVEL_ERROR
 #'@param timeout time to wait for sending message. The longest time for hanging is 2*timeout
 #'@examples
-#'facebookMessage("wush", "shouldnotbehere", "12345678", "R XMPPNotifier testing message")
+#'# not run
+#'# facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
 #'@export
 facebookMessage <- function(username, password, fbid, message, log_level = XMPP_LEVEL_ERROR, timeout=15) {
 	username <- paste(username, "@chat.facebook.com", sep="")
