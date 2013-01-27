@@ -11,7 +11,6 @@ Depends:
     methods,
     Rcpp (>= 0.10.2)
 LinkingTo: Rcpp
-RcppModules: agent_module
 Collate:
     'zzz.R'
     'facebookMessage.function.R'
