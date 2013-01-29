@@ -1,30 +1,41 @@
 \name{sendXMPPMessage}
 \alias{sendXMPPMessage}
-\title{Send XMPP Message}
+\title{Send Message}
 \usage{
   sendXMPPMessage(jid, password, to, message,
     log_level = XMPP_LEVEL_ERROR, timeout = 15)
 }
 \arguments{
-  \item{jid}{string such as "xxxxxx@chat.facebook.com"}
+  \item{jid}{single length character such as
+  "xxxxxx@chat.facebook.com" or "xxxxx@gmail.com"}
 
-  \item{password}{password for login}
+  \item{password}{single length character which is the
+  password for \code{jid}}
 
-  \item{to}{"-<fbid>@chat.facebook.com"}
+  \item{to}{single length character which is the jid of
+  receiver such as "-<fbid>@chat.facebook.com" or
+  "xxxx@gmail.com"}
 
-  \item{message}{message to send}
+  \item{message}{multiple length character, the messages to
+  \code{to}.}
 
-  \item{log_level}{level of displayed message. One of
-  XMPP_LEVEL_DEBUG, XMPP_LEVEL_INFO, XMPP_LEVEL_WARN, and
-  XMPP_LEVEL_ERROR}
+  \item{log_level}{level of displayed message to R console.
+  One of \code{\link{XMPP_LEVEL_DEBUG}},
+  \code{\link{XMPP_LEVEL_INFO}},
+  \code{\link{XMPP_LEVEL_WARN}}, and
+  \code{\link{XMPP_LEVEL_ERROR}}}
 
-  \item{timeout}{time to wait for sending message. The
-  longest time for hanging is 2*timeout}
+  \item{timeout}{time(seconds) to wait for sending message.
+  The longest time for blocking is \code{2*timeout}}
 }
 \description{
-  Send XMPP Message
+  This function sends a message via XMPP protocol.
 }
 \examples{
-sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com", "test message via R")
+sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com", "test message via R unicode測試")
+}
+\seealso{
+  \code{\link{facebookMessage}} for sending message via
+  facebook
 }
 

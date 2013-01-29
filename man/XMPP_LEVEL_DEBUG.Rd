@@ -1,13 +1,17 @@
 \docType{data}
 \name{XMPP_LEVEL_DEBUG}
 \alias{XMPP_LEVEL_DEBUG}
-\title{Level for displaying message}
-\format{int 0}
-\usage{
-  XMPP_LEVEL_DEBUG
-}
+\alias{XMPP_LEVEL_ERROR}
+\alias{XMPP_LEVEL_INFO}
+\alias{XMPP_LEVEL_WARN}
+\title{Level for displaying logs}
+\format{integer}
 \description{
-  Level for displaying message
+  Level for displaying logs
+}
+\seealso{
+  \code{\link{sendXMPPMessage}}
+  \code{\link{facebookMessage}}
 }
 \keyword{datasets}
 

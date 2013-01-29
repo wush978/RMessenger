@@ -15,17 +15,22 @@
   \item{message}{message to send}
 
   \item{log_level}{level of displayed message. One of
-  XMPP_LEVEL_DEBUG, XMPP_LEVEL_INFO, XMPP_LEVEL_WARN, and
-  XMPP_LEVEL_ERROR}
+  \code{\link{XMPP_LEVEL_DEBUG}},
+  \code{\link{XMPP_LEVEL_INFO}},
+  \code{\link{XMPP_LEVEL_WARN}}, and
+  \code{\link{XMPP_LEVEL_ERROR}}}
 
   \item{timeout}{time to wait for sending message. The
   longest time for hanging is 2*timeout}
 }
 \description{
-  Send Facebook Message
+  A helper to send message via facebook
 }
 \examples{
 # not run
 # facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
+}
+\seealso{
+  \code{\link{sendXMPPMessage}}
 }
 
