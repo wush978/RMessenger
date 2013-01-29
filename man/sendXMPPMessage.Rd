@@ -32,7 +32,7 @@
   This function sends a message via XMPP protocol.
 }
 \examples{
-sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com", "test message via R unicode測試")
+sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com", "test message via R")
 }
 \seealso{
   \code{\link{facebookMessage}} for sending message via
