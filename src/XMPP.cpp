@@ -48,12 +48,10 @@ namespace RXMPP {
 	{
 	    UserData* data = reinterpret_cast<UserData *>(userdata);
 		if (status == XMPP_CONN_CONNECT) {
-			Rprintf("DEBUG: connected\n");
 			data->is_connect = true;
 			return;
 		}
 		else {
-			Rprintf("DEBUG: disconnected\n");
 			xmpp_stop(data->ctx);
 			return;
 		}
@@ -85,6 +83,7 @@ namespace RXMPP {
 SEXP RXMPP__sendMessage(SEXP Rusername, SEXP Rpassword, SEXP Rto, SEXP Rmessage, SEXP Rlog_level, SEXP Rtimeout) {
 	BEGIN_RCPP
 	xmpp_initialize();
+
 	xmpp_log_level_t log_level;
 	switch (as<int>(Rlog_level)) {
 	case 0:
@@ -112,7 +111,12 @@ SEXP RXMPP__sendMessage(SEXP Rusername, SEXP Rpassword, SEXP Rto, SEXP Rmessage,
 
 	// initialization
 	std::auto_ptr<RXMPP::Context> ctx(new RXMPP::Context(log_level));
+	if (ctx->ctx == NULL)
+		throw std::runtime_error("xmpp_ctx_new failed");
 	std::auto_ptr<RXMPP::Connection> conn(new RXMPP::Connection(ctx->ctx));
+	if (conn->conn == NULL) {
+		throw std::runtime_error("xmpp_conn_new failed");
+	}
 
 	// setting username/password
 	xmpp_conn_set_jid(conn->conn, username.c_str());
@@ -124,7 +128,6 @@ SEXP RXMPP__sendMessage(SEXP Rusername, SEXP Rpassword, SEXP Rto, SEXP Rmessage,
 	data.is_connect = false;
 	data.is_send = false;
 	xmpp_connect_client(conn->conn, NULL, 0, &RXMPP::conn_handler, &data);
-	Rprintf("&data: %p conn->conn: %p \n", &data, conn->conn);
 
 	time_t start_time = time(NULL);
 	time_t current_time = time(NULL);
