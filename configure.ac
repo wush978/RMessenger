@@ -16,7 +16,12 @@ AC_PROG_CPP
     
 AC_CHECK_HEADER(openssl/ssl.h, [], [AC_MSG_ERROR([could not find openssl headers, openssl required])])
 AC_CHECK_HEADER(resolv.h, [LIBS="$LIBS -lresolv"], [AC_MSG_ERROR([could not find resolv headers, resolv required])])
+PKG_CHECK_MODULES(libxml2, [libxml-2.0 >= 2.7], [HAVE_LIBXML2="yes"], [AC_MSG_ERROR([could not find libxml2, libxml2 required])])
+if test "$HAVE_LIBXML2" = "yes"; then
+  LIBS="$LIBS $libxml2_LIBS"
+  CFLAGS=$libxml2_CFLAGS
+fi
 
 dnl and do substitution in the src/Makevars.in and src/config.h
 AC_CONFIG_FILES([src/Makevars])
-AC_OUTPUT
+AC_OUTPUT()

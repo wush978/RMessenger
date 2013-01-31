@@ -1,6 +1,3 @@
-libxml2_CFLAGS = -I/usr/include/libxml2
-libxml2_LIBS= -lxml2 -lz
-
 SSL_LIBS = -lssl -lcrypto -lz
 
 SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
@@ -9,9 +6,9 @@ SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 	libstrophe/snprintf.c libstrophe/sock.c libstrophe/stanza.c libstrophe/thread.c \
 	libstrophe/tls_openssl.c libstrophe/util.c libstrophe/parser_libxml2.c
 
-PKG_LIBS = `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(libxml2_LIBS) $(SSL_LIBS) @LIBS@
+PKG_LIBS = `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(SSL_LIBS) @LIBS@
 PKG_CPPFLAGS = $(CPPFLAGS)
-PKG_CFLAGS = -I. $(libxml2_CFLAGS)
+PKG_CFLAGS = -I. @CFLAGS@
 
 
 SOURCES_CPP = $(wildcard *.cpp)

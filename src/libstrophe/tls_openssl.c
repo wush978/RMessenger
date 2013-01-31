@@ -27,6 +27,7 @@
 #include <openssl/ssl.h>
 #include <openssl/rand.h>
 
+#include <unistd.h>
 #include "common.h"
 #include "tls.h"
 #include "sock.h"
@@ -127,6 +128,7 @@ int tls_start(tls_t *tls)
 	return 0;
     }
 
+    sleep(1);
     return 1;
 
 }
