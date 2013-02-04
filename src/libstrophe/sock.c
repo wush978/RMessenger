@@ -43,6 +43,12 @@
 
 #include "sock.h"
 
+/* check boundary condition */
+#define LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET 	if (buflen < *offset) { \
+return; \
+}
+
+
 void sock_initialize(void)
 {
 #ifdef _WIN32
@@ -375,7 +381,7 @@ int netbuf_get_domain_name(unsigned char *buf, int buflen, int *offset, char *na
 
 	/* measure length */
 	p = start;
-	while (*p)
+	while (p - buf < buflen && *p)
 	{
 		if ((*p & 0xC0) == 0xC0)
 		{
@@ -400,7 +406,7 @@ int netbuf_get_domain_name(unsigned char *buf, int buflen, int *offset, char *na
 	/* actually copy in name */
 	p = start;
 	p2 = (unsigned char *)namebuf;
-	while (*p)
+	while (p - buf < buflen && *p)
 	{
 		if ((*p & 0xC0) == 0xC0)
 		{
@@ -448,6 +454,7 @@ int netbuf_get_domain_name(unsigned char *buf, int buflen, int *offset, char *na
 
 void netbuf_add_dnsquery_header(unsigned char *buf, int buflen, int *offset, struct dnsquery_header *header)
 {
+	LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET
 	unsigned char *p;
 
 	netbuf_add_16bitnum(buf, buflen, offset, header->id);
@@ -471,6 +478,7 @@ void netbuf_add_dnsquery_header(unsigned char *buf, int buflen, int *offset, str
 
 void netbuf_get_dnsquery_header(unsigned char *buf, int buflen, int *offset, struct dnsquery_header *header)
 {
+	LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET
 	unsigned char *p;
 		
 	netbuf_get_16bitnum(buf, buflen, offset, &(header->id));
@@ -496,6 +504,7 @@ void netbuf_get_dnsquery_header(unsigned char *buf, int buflen, int *offset, str
 
 void netbuf_add_dnsquery_question(unsigned char *buf, int buflen, int *offset, struct dnsquery_question *question)
 {
+	LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET
 	netbuf_add_domain_name(buf, buflen, offset, question->qname);
 	netbuf_add_16bitnum(buf, buflen, offset, question->qtype);
 	netbuf_add_16bitnum(buf, buflen, offset, question->qclass);
@@ -503,6 +512,7 @@ void netbuf_add_dnsquery_question(unsigned char *buf, int buflen, int *offset, s
 
 void netbuf_get_dnsquery_question(unsigned char *buf, int buflen, int *offset, struct dnsquery_question *question)
 {
+	LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET
 	netbuf_get_domain_name(buf, buflen, offset, question->qname, 1024);
 	netbuf_get_16bitnum(buf, buflen, offset, &(question->qtype));
 	netbuf_get_16bitnum(buf, buflen, offset, &(question->qclass));
@@ -510,6 +520,7 @@ void netbuf_get_dnsquery_question(unsigned char *buf, int buflen, int *offset, s
 
 void netbuf_get_dnsquery_srvrdata(unsigned char *buf, int buflen, int *offset, struct dnsquery_srvrdata *srvrdata)
 {
+	LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET
 	netbuf_get_16bitnum(buf, buflen, offset, &(srvrdata->priority));
 	netbuf_get_16bitnum(buf, buflen, offset, &(srvrdata->weight));
 	netbuf_get_16bitnum(buf, buflen, offset, &(srvrdata->port));
@@ -518,6 +529,7 @@ void netbuf_get_dnsquery_srvrdata(unsigned char *buf, int buflen, int *offset, s
 
 void netbuf_get_dnsquery_resourcerecord(unsigned char *buf, int buflen, int *offset, struct dnsquery_resourcerecord *rr)
 {
+	LIBSTROPHE_SOCK_CHECK_OFFSET_BUFLEN_OFFSET
 	netbuf_get_domain_name(buf, buflen, offset, rr->name, 1024);
 	netbuf_get_16bitnum(buf, buflen, offset, &(rr->type));
 	netbuf_get_16bitnum(buf, buflen, offset, &(rr->_class));
