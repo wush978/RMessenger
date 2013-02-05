@@ -1,7 +1,7 @@
 Package: RMessenger
 Type: Package
 Title: IM Client for R
-Version: 0.1
+Version: 0.1.1
 Date: 2013-01-20
 Author: Wush Wu
 Maintainer: Wush Wu <wush978@gmail.com>
@@ -11,7 +11,7 @@ Description: IM Client which implements XMPP protocols based on
 License: GPL
 Depends:
     methods,
-    Rcpp (>= 0.10.2)
+    Rcpp (>= 0.9.13)
 LinkingTo: Rcpp
 Collate:
     'zzz.R'
