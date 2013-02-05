@@ -19,7 +19,7 @@ Please confirm the version of R( >= 2.15.2 ) and Rcpp( >= 0.10.2 ).
 install.packages("Rcpp")
 ```
 
-Download the source package from https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/RMessenger_0.1.tar.gz and call `R CMD INSTALL` to install
+Download the source package from https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/RMessenger_0.1.1.tar.gz and call `R CMD INSTALL` to install
 
 This package is unavailable on Windows
 
@@ -64,7 +64,7 @@ R中請確認版本為2.15.2以上，Rcpp請確認為0.10.2以上。
 install.packages("Rcpp")
 ```
 
-請下載 https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/RMessenger_0.1.tar.gz 後使用`R CMD INSTALL`來安裝
+請下載 https://dl.dropbox.com/u/11900271/Wush-R-pkg-src/RMessenger_0.1.1.tar.gz 後使用`R CMD INSTALL`來安裝
 
 Windows目前無法使用
 
