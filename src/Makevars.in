@@ -2,9 +2,10 @@ SSL_LIBS = -lssl -lcrypto -lz
 
 SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 	libstrophe/event.c libstrophe/handler.c libstrophe/hash.c \
-	libstrophe/jid.c libstrophe/md5.c libstrophe/sasl.c libstrophe/sha1.c \
+	libstrophe/jid.c libstrophe/md5.c libstrophe/sasl.c \
 	libstrophe/snprintf.c libstrophe/sock.c libstrophe/stanza.c libstrophe/thread.c \
 	libstrophe/tls_openssl.c libstrophe/util.c libstrophe/parser_libxml2.c
+# libstrophe/sha1.c 
 
 PKG_LIBS = `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(SSL_LIBS) @LIBS@
 PKG_CPPFLAGS = $(CPPFLAGS)
