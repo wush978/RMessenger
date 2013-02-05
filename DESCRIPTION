@@ -11,7 +11,7 @@ Description: IM Client which implements XMPP protocols based on
 License: GPL
 Depends:
     methods,
-    Rcpp (>= 0.9.13)
+    Rcpp (>= 0.9.9)
 LinkingTo: Rcpp
 Collate:
     'zzz.R'
