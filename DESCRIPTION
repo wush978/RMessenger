@@ -5,10 +5,11 @@ Version: 0.1.1
 Date: 2013-01-20
 Author: Wush Wu
 Maintainer: Wush Wu <wush978@gmail.com>
-Description: IM Client which implements XMPP protocols based on
+Description: Instant Messenger Client which implements XMPP protocols based on
     libstrophe(http://strophe.im/libstrophe/)
+    The source of libstrophe is included in src/libstrophe/*
     For any suggestion or bug report, please visit https://github.com/wush978/RMessenger
-License: GPL
+License: GPLv3
 Depends:
     methods,
     Rcpp (>= 0.9.9)
