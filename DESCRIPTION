@@ -7,9 +7,9 @@ Author: Wush Wu
 Maintainer: Wush Wu <wush978@gmail.com>
 Description: Instant Messenger Client which implements XMPP protocols based on
     libstrophe(http://strophe.im/libstrophe/)
-    The source of libstrophe is included in `src/libstrophe/*`. I also fix some 
-    bugs about memory. For details, please read the commit log here
-    (https://github.com/wush978/RMessenger/commit/adccbc18197a9842135dfb243c1e2f8b81e982ea).
+    The source of libstrophe is included in `src/libstrophe/*`. The license of 
+    libstrophe is also included in `src/libstrophe/`.
+    Note that I also slightly modified the source of libstrophe. Please see (https://github.com/wush978/RMessenger/commit/adccbc18197a9842135dfb243c1e2f8b81e982ea) for details.
     For any suggestion or bug report, please visit https://github.com/wush978/RMessenger
 License: GPLv3
 Depends:
