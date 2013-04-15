@@ -11,7 +11,7 @@ Description: Instant Messenger Client which implements XMPP protocols based on
     libstrophe is also included in `src/libstrophe/`.
     Note that I also slightly modified the source of libstrophe. Please see (https://github.com/wush978/RMessenger/commit/adccbc18197a9842135dfb243c1e2f8b81e982ea) for details.
     For any suggestion or bug report, please visit https://github.com/wush978/RMessenger
-License: GPLv3
+License: GPL (>= 3)
 Depends:
     methods,
     Rcpp (>= 0.9.9)
