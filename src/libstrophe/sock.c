@@ -35,9 +35,6 @@
 #include <netdb.h>
 #include <fcntl.h>
 #include <arpa/nameser.h>
-#ifdef HAVE_ARPA_NAMESER_COMPAT_H
-#include <arpa/nameser_compat.h>
-#endif
 #include <resolv.h>
 #endif
 
