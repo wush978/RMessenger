@@ -9,8 +9,9 @@
 #'@param log_level level of displayed message. One of \code{\link{XMPP_LEVEL_DEBUG}}, \code{\link{XMPP_LEVEL_INFO}}, \code{\link{XMPP_LEVEL_WARN}}, and \code{\link{XMPP_LEVEL_ERROR}}
 #'@param timeout time to wait for sending message. The longest time for hanging is 2*timeout
 #'@examples
-#'# not run
-#'# facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
+#'\dontrun{
+#'facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
+#'}
 #'@export
 #'@seealso \code{\link{sendXMPPMessage}}
 facebookMessage <- function(username, password, fbid, message, log_level = XMPP_LEVEL_ERROR, timeout=15) {

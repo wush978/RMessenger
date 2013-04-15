@@ -10,8 +10,9 @@
 #'  \code{\link{XMPP_LEVEL_INFO}}, \code{\link{XMPP_LEVEL_WARN}}, and \code{\link{XMPP_LEVEL_ERROR}}
 #'@param timeout time(seconds) to wait for sending message. The longest time for blocking is \code{2*timeout}
 #'@examples
-#'# not run
-#'# sendXMPPMessage("xxx@@chat.facebook.com", "xxx", "-12345xxx1324@@chat.facebook.com", "test message via R")
+#'\dontrun{
+#'sendXMPPMessage("xxx@@chat.facebook.com", "xxx", "-12345xxx1324@@chat.facebook.com", "test message via R")
+#'}
 #'@export
 #'@seealso \code{\link{facebookMessage}} for sending message via facebook
 sendXMPPMessage <- function(jid, password, to, message, log_level = XMPP_LEVEL_ERROR, timeout = 15) {
