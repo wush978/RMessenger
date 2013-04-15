@@ -32,7 +32,9 @@
   This function sends a message via XMPP protocol.
 }
 \examples{
+\dontrun{
 sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com", "test message via R")
+}
 }
 \seealso{
   \code{\link{facebookMessage}} for sending message via

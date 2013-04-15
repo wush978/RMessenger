@@ -27,8 +27,9 @@
   A helper to send message via facebook
 }
 \examples{
-# not run
-# facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
+\dontrun{
+facebookMessage("wush", "shouldnotbehere", "12345678", "RMessenger testing message")
+}
 }
 \seealso{
   \code{\link{sendXMPPMessage}}
