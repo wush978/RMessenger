@@ -1,3 +1,19 @@
+/*
+** Modify:
+**   handler_fire_stanza
+**   handler_fire_timed
+**   handler_reset_timed
+**   _timed_handler_add
+**   _timed_handler_add
+**   xmpp_timed_handler_delete
+**   _id_handler_add
+**   xmpp_id_handler_delete
+**   _handler_add
+**   xmpp_handler_delete
+**   
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* handler.c
 ** strophe XMPP client library -- event handler management
 **

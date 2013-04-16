@@ -1,3 +1,11 @@
+/* 
+** Add header <unistd.h>
+** Modify:
+**   tls_start
+**   _render_stanza_recursive
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* tls_openssl.c
 ** strophe XMPP client library -- TLS abstraction openssl impl.
 **

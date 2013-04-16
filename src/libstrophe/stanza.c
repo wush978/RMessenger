@@ -1,3 +1,11 @@
+/* 
+** Remove _escape_xml
+** Modify:
+**   xmpp_stanza_copy
+**   _render_stanza_recursive
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* stanza.c
 ** strophe XMPP client library -- XMPP stanza object and utilities
 **

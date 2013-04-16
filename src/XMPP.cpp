@@ -2,8 +2,16 @@
  * XMPP.cpp
  *
  *  Created on: Jan 27, 2013
- *      Author: wush
- */
+ *  Copyright (C) 2013 Wush Wu
+ *
+**  This software is provided AS-IS with no warranty, either express or
+**  implied.
+**
+**  This software is distributed under license and may not be copied,
+**  modified or distributed except as expressly authorized under the
+**  terms of the license contained in the file LICENSE.txt in this
+**  distribution.
+*/
 
 #include <ctime>
 #include <memory>

@@ -1,3 +1,14 @@
+/*
+** modify: 
+**   xmpp_conn_release
+**   _log_open_tag
+**   _handle_stream_start
+**   _handle_stream_end
+**   _handle_stream_stanza
+**   
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* conn.c
 ** strophe XMPP client library -- connection object functions
 **

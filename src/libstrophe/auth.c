@@ -1,3 +1,8 @@
+/*
+** Remove static void _handle_open_tls(xmpp_conn_t * const conn);
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* auth.c
 ** strophe XMPP client library -- auth functions and handlers
 **
@@ -56,7 +61,6 @@
 #endif
 
 static void _auth(xmpp_conn_t * const conn);
-//static void _handle_open_tls(xmpp_conn_t * const conn);
 static void _handle_open_sasl(xmpp_conn_t * const conn);
 static int _handle_missing_legacy(xmpp_conn_t * const conn,
 				  void * const userdata);

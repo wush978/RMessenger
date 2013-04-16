@@ -1,3 +1,8 @@
+/*
+** Add Rprintf
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* strophe.h
 ** strophe XMPP client library C API
 **

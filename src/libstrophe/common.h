@@ -1,3 +1,9 @@
+/*
+** Modify
+**    struct _xmpp_handlist_t
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* common.h
 ** strophe XMPP client library -- internal common structures
 **

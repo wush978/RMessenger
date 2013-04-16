@@ -1,3 +1,8 @@
+/*
+** Modify xmpp_default_logger
+** Copyright (C) 2013 Wush Wu
+*/
+
 /* ctx.c
 ** strophe XMPP client library -- run-time context implementation
 **
