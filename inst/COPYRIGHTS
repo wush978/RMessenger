@@ -1,5 +1,6 @@
 Modifications and additions are Copyright (C) 2013 Wush Wu
 The original libstrophe code is Copyright (C) 2005-2009 Collecta, Inc.
+The src/libstrophe/snprintf.c is Copyright Patrick Powell 1995
 
 This program is licensed under GPLv3 licenses.
-Please the files GPL-LICENSE.txt for details.
+Please the files LICENSE.txt for details.
