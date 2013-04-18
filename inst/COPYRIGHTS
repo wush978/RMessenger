@@ -1,8 +1,5 @@
-RMessenger
-Copyright (C) 2013 Wush Wu
+Modifications and additions are Copyright (C) 2013 Wush Wu
+The original libstrophe code is Copyright (C) 2005-2009 Collecta, Inc.
 
-libstrophe XMPP client library
-Copyright (C) 2005-2009 Collecta, Inc.
-
-This program is dual licensed under the MIT and GPLv3 licenses.
-Please the files MIT-LICENSE.txt and GPL-LICENSE.txt for details.
+This program is licensed under GPLv3 licenses.
+Please the files GPL-LICENSE.txt for details.
