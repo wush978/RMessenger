@@ -1,6 +1,7 @@
 /* hash.c
 ** strophe XMPP client library -- hash table implementation
 ** 
+** Copyright (C) 2013 Wush Wu <wush978@gmail.com>
 ** Copyright (C) 2005-2009 Collecta, Inc. 
 **
 **  This software is provided AS-IS with no warranty, either express

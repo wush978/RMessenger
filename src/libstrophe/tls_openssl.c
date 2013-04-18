@@ -1,14 +1,7 @@
-/* 
-** Add header <unistd.h>
-** Modify:
-**   tls_start
-**   _render_stanza_recursive
-** Copyright (C) 2013 Wush Wu
-*/
-
 /* tls_openssl.c
 ** strophe XMPP client library -- TLS abstraction openssl impl.
 **
+** Copyright (C) 2013 Wush Wu <wush978@gmail.com>
 ** Copyright (C) 2005-008 Collecta, Inc. 
 **
 **  This software is provided AS-IS with no warranty, either express

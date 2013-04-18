@@ -1,21 +1,7 @@
-/*
-** Remove MACRO associated with <arpa/nameser_compat.h>
-** Add MACRO to check boundary condition
-** Modify:
-**   netbuf_get_domain_name
-**   netbuf_add_dnsquery_header
-**   netbuf_get_dnsquery_header
-**   netbuf_add_dnsquery_question
-**   netbuf_get_dnsquery_question
-**   netbuf_get_dnsquery_srvrdata
-**   netbuf_get_dnsquery_resourcerecord
-** Copyright (C) 2013 Wush Wu
-*/
-
-
 /* sock.c
 ** strophe XMPP client library -- socket abstraction implementation
 **
+** Copyright (C) 2013 Wush Wu <wush978@gmail.com>
 ** Copyright (C) 2005-2009 Collecta, Inc. 
 **
 **  This software is provided AS-IS with no warranty, either express

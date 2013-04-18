@@ -1,11 +1,7 @@
-/*
-** Remove static void _handle_open_tls(xmpp_conn_t * const conn);
-** Copyright (C) 2013 Wush Wu
-*/
-
 /* auth.c
 ** strophe XMPP client library -- auth functions and handlers
 **
+** Copyright (C) 2013 Wush Wu <wush978@gmail.com>
 ** Copyright (C) 2005-2009 Collecta, Inc. 
 **
 **  This software is provided AS-IS with no warranty, either express or

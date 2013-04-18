@@ -1,17 +1,7 @@
-/*
-** modify: 
-**   xmpp_conn_release
-**   _log_open_tag
-**   _handle_stream_start
-**   _handle_stream_end
-**   _handle_stream_stanza
-**   
-** Copyright (C) 2013 Wush Wu
-*/
-
 /* conn.c
 ** strophe XMPP client library -- connection object functions
 **
+** Copyright (C) 2013 Wush Wu <wush978@gmail.com>
 ** Copyright (C) 2005-2009 Collecta, Inc. 
 **
 **  This software is provided AS-IS with no warranty, either express

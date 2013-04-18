@@ -1,14 +1,7 @@
-/* 
-** Remove _escape_xml
-** Modify:
-**   xmpp_stanza_copy
-**   _render_stanza_recursive
-** Copyright (C) 2013 Wush Wu
-*/
-
 /* stanza.c
 ** strophe XMPP client library -- XMPP stanza object and utilities
 **
+** Copyright (C) 2013 Wush Wu <wush978@gmail.com>
 ** Copyright (C) 2005-2009 Collecta, Inc. 
 **
 **  This software is provided AS-IS with no warranty, either express
