@@ -3,7 +3,7 @@ Type: Package
 Title: IM Client for R
 Version: 0.1.2
 Date: 2013-01-20
-Author: Wush Wu and Jack Moffitt
+Author: Wush Wu, Jack Moffitt and Patrick Powell
 Maintainer: Wush Wu <wush978@gmail.com>
 Description: RMessenger contains 2 part of works:
     - A derivative work of libstrophe(http://strophe.im/libstrophe/)
