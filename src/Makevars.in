@@ -9,7 +9,7 @@ SOURCES_STROPHE = libstrophe/auth.c libstrophe/conn.c libstrophe/ctx.c \
 
 PKG_LIBS = `${R_HOME}/bin/Rscript -e "Rcpp:::LdFlags()"` $(SSL_LIBS) @LIBS@
 PKG_CPPFLAGS = $(CPPFLAGS)
-PKG_CFLAGS = -I. @CFLAGS@
+PKG_CFLAGS = -I. @CFLAGS@ -DHAVE_ARPA_NAMESER_COMPAT_H=1
 
 
 SOURCES_CPP = $(wildcard *.cpp)
