@@ -33,7 +33,8 @@
 }
 \examples{
 \dontrun{
-sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com", "test message via R")
+sendXMPPMessage("xxx@chat.facebook.com", "xxx", "-12345xxx1324@chat.facebook.com",
+ "test message via R")
 }
 }
 \seealso{
