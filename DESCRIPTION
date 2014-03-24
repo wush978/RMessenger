@@ -15,6 +15,7 @@ Depends:
     methods,
     Rcpp (>= 0.9.9)
 LinkingTo: Rcpp
+SystemRequirements: OpenSSL library
 Collate:
     'zzz.R'
     'facebookMessage.function.R'
