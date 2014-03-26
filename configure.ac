@@ -14,7 +14,7 @@ CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
 AC_PROG_CC
 AC_PROG_CPP
     
-AC_CHECK_HEADER(openssl/ssl.h, [], [AC_MSG_ERROR([could not find openssl headers, openssl required])])
+AC_CHECK_HEADER(OPENSSL_INCLUDES, [], [AC_MSG_ERROR([could not find openssl headers, openssl required])])
 AC_CHECK_HEADER(resolv.h, [LIBS="$LIBS -lresolv"], [AC_MSG_ERROR([could not find resolv headers, resolv required])])
 PKG_CHECK_MODULES(libxml2, [libxml-2.0 >= 2.7], [HAVE_LIBXML2="yes"], [AC_MSG_ERROR([could not find libxml2, libxml2 required])])
 if test "$HAVE_LIBXML2" = "yes"; then
