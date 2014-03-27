@@ -18,6 +18,8 @@
 #'@export
 #'@seealso \code{\link{sendXMPPMessage}} \code{\link{facebookMessage}}
 #'@useDynLib RMessenger
+#'@import Rcpp
+#'@import methods
 XMPP_LEVEL_DEBUG <- 0L
 
 #'@export

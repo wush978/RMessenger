@@ -11,7 +11,7 @@ Description: RMessenger contains 2 part of works:
     For any suggestion or bug report, please visit
     https://github.com/wush978/RMessenger
 License: GPL (>= 3)
-Depends:
+Imports:
     methods,
     Rcpp (>= 0.9.9)
 LinkingTo: Rcpp
