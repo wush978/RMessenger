@@ -14,8 +14,25 @@ CPPFLAGS=`"${R_HOME}/bin/R" CMD config CPPFLAGS`
 AC_PROG_CC
 AC_PROG_CPP
     
+# Check for pkg-config program, used for configuring some libraries.
+#
+m4_define_default([PKG_PROG_PKG_CONFIG],
+[AC_MSG_CHECKING([pkg-config])
+AC_MSG_RESULT([no])])
+
+PKG_PROG_PKG_CONFIG
+
+# If the pkg-config autoconf support isn't installed, define its
+# autoconf macro to disable any packages depending on it.
+#
+m4_define_default([PKG_CHECK_MODULES],
+[AC_MSG_CHECKING([$1])
+AC_MSG_RESULT([no])
+$4])
+
 AC_CHECK_HEADER(openssl/ssl.h, [], [AC_MSG_ERROR([could not find openssl headers, openssl required])])
 AC_CHECK_HEADER(resolv.h, [LIBS="$LIBS -lresolv"], [AC_MSG_ERROR([could not find resolv headers, resolv required])])
+
 PKG_CHECK_MODULES(libxml2, [libxml-2.0 >= 2.7], 
                   [HAVE_LIBXML2="yes"], [])
 if test "$HAVE_LIBXML2" = "yes"; then
