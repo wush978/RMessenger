@@ -1,7 +1,7 @@
 Package: RMessenger
 Type: Package
 Title: IM Client for R
-Version: 0.1.4
+Version: 0.1.5
 Date: 2013-01-20
 Author: Wush Wu, Jack Moffitt and Patrick Powell
 Maintainer: Wush Wu <wush978@gmail.com>
@@ -15,7 +15,7 @@ Imports:
     methods,
     Rcpp (>= 0.9.9)
 LinkingTo: Rcpp
-SystemRequirements: OpenSSL library
+SystemRequirements: OpenSSL library, libxml2
 Collate:
     'zzz.R'
     'facebookMessage.function.R'
