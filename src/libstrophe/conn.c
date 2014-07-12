@@ -682,7 +682,7 @@ void xmpp_conn_disable_tls(xmpp_conn_t * const conn)
 static void _log_open_tag(xmpp_conn_t *conn, char **attrs)
 {
 	xmpp_debug(conn->ctx, "xmpp", "_log_open_tag\n");
-    char buf[4096];
+    char buf[4097];
     size_t len, pos;
     int i;
     
