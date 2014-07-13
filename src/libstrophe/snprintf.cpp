@@ -15,9 +15,6 @@ int xmpp_snprintf (char *str, size_t count, const char *fmt, ...)
   int total;
     
   va_start(ap, fmt);
-  str = va_arg(ap, char *);
-  count = va_arg(ap, size_t);
-  fmt = va_arg(ap, char *);
   total = xmpp_vsnprintf(str, count, fmt, ap);
   va_end(ap);
   return total;
